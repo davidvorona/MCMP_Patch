@@ -11,6 +11,7 @@ using static MCMP_Patch.CustomLogging;
 namespace MCMP_Patch
 {
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+    [BepInDependency("FlipMods.TooManyEmotes", BepInDependency.DependencyFlags.HardDependency)]
     public class Plugin : BaseUnityPlugin
     {
         private readonly Harmony harmony = new Harmony(PluginInfo.PLUGIN_GUID);
