@@ -51,7 +51,6 @@ namespace MCMP_Patch.Patches
                             }
                         }
                     }
-
                 }
             }
         }
