@@ -31,7 +31,6 @@ namespace MCMP_Patch
             InitLogger();
 
             harmony.PatchAll(typeof(Plugin));
-            harmony.PatchAll(typeof(DominoPatch));
             harmony.PatchAll(typeof(CauseOfDeathPatch));
             harmony.PatchAll(typeof(TerminalPatch));
             #if DEBUG

@@ -74,7 +74,6 @@
     <Compile Include="Patches\CauseOfDeathPatch.cs" />
     <Compile Include="Patches\TerminalPatch.cs" />
     <Compile Include="Plugin.cs" />
-    <Compile Include="Patches\DominoPatch.cs" />
     <Compile Include="PluginInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

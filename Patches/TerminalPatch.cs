@@ -6,15 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static MCMP_Patch.HelperTools;
-using TooManyEmotes.Networking;
-using TooManyEmotes;
 
 namespace MCMP_Patch.Patches
 {
     [HarmonyPatch(typeof(Terminal), "ParsePlayerSentence")]
     class TerminalPatch
     {
-        static readonly string emoteID1 = "planetary_vibes";
+        static readonly int inverseTpUnlockableID = 19;
 
         [HarmonyPostfix]
         static void Postfix(ref TerminalNode __result, Terminal __instance)
@@ -30,29 +28,30 @@ namespace MCMP_Patch.Patches
 
             if ("confirm".StartsWith(input))
             {
-                if (__result.buyRerouteToMoon != -1 && __result.buyRerouteToMoon != -2 && __result.itemCost > 0)
+                PlayerControllerB player = GetPlayerUsingTerminal();
+                string playerUsername = player?.playerUsername;
+                if (__result.shipUnlockableID == inverseTpUnlockableID)
                 {
-                    // TODO: Is there a better way to get the current player using the terminal?
-                    foreach (PlayerControllerB player in StartOfRound.Instance.allPlayerScripts)
-                    {
-                        if (player.inTerminalMenu)
-                        {
-                            string playerUsername = player.playerUsername;
-                            UnlockableEmote planetaryEmote = EmotesManager.allUnlockableEmotesDict[emoteID1];
-                            if (!SessionManager.IsEmoteUnlocked(planetaryEmote, playerUsername))
-                            {
-                                if (!ConfigSync.instance.syncShareEverything)
-                                    SessionManager.UnlockEmoteLocal(planetaryEmote, false, playerUsername);
-
-                                SyncManager.SendOnUnlockEmoteUpdate(planetaryEmote.emoteId);
-
-                                AddAchievement(Achievements.SpaceIsTheBest, playerUsername);
-                                AddChatMessage(planetaryEmote.displayNameColorCoded + " emote unlocked!");
-                            }
-                        }
-                    }
+                    TryUnlockEmoteAchievement(Achievements.DominoEffect, playerUsername);
+ 
+                }
+                else if (__result.buyRerouteToMoon != -1 && __result.buyRerouteToMoon != -2 && __result.itemCost > 0)
+                {
+                    TryUnlockEmoteAchievement(Achievements.SpaceIsTheBest, playerUsername);
                 }
             }
+        }
+
+        public static PlayerControllerB GetPlayerUsingTerminal()
+        {
+            foreach (PlayerControllerB player in StartOfRound.Instance.allPlayerScripts)
+            {
+                if (player.inTerminalMenu)
+                {
+                    return player;
+                }
+            }
+            return null;
         }
     }
 }
