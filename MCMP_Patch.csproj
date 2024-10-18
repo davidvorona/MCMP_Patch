@@ -72,6 +72,7 @@
     <Compile Include="HelperTools.cs" />
     <Compile Include="Patches\InfiniteCreditsPatch.cs" />
     <Compile Include="Patches\CauseOfDeathPatch.cs" />
+    <Compile Include="Patches\TerminalPatch.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Patches\DominoPatch.cs" />
     <Compile Include="PluginInfo.cs" />
