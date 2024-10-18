@@ -4,6 +4,7 @@ using GameNetcodeStuff;
 using HarmonyLib;
 using MCMP_Patch.Patches;
 using System;
+using System.Diagnostics;
 using Unity;
 using UnityEngine;
 using static MCMP_Patch.CustomLogging;
@@ -31,8 +32,10 @@ namespace MCMP_Patch
 
             harmony.PatchAll(typeof(Plugin));
             harmony.PatchAll(typeof(DominoPatch));
-            // DEBUG
-            // harmony.PatchAll(typeof(InfiniteCreditsPatch));
+            harmony.PatchAll(typeof(CauseOfDeathPatch));
+            #if DEBUG
+                harmony.PatchAll(typeof(InfiniteCreditsPatch));
+            #endif
 
             Log(PluginInfo.PLUGIN_GUID + " has loaded successfully.");
         }

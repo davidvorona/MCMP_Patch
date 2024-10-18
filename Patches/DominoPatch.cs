@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel;
 using TooManyEmotes.Networking;
 using static MCMP_Patch.HelperTools;
 using static MCMP_Patch.CustomLogging;
@@ -33,8 +32,8 @@ namespace MCMP_Patch.Patches
 
                     SyncManager.SendOnUnlockEmoteUpdate(dominoEmote.emoteId);
 
-                    AddChatMessage("Domino emote unlocked!");
-                    Log("Inverse TP purchased: domino emote unlocked.");
+                    AddAchievement(Achievements.DominoEffect);
+                    AddChatMessage(dominoEmote.displayNameColorCoded + " emote unlocked!");
                 }
             }
         }
