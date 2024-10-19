@@ -33,6 +33,7 @@ namespace MCMP_Patch
             harmony.PatchAll(typeof(Plugin));
             harmony.PatchAll(typeof(CauseOfDeathPatch));
             harmony.PatchAll(typeof(TerminalPatch));
+            harmony.PatchAll(typeof(GrabbableObjectPatch));
             #if DEBUG
                 harmony.PatchAll(typeof(InfiniteCreditsPatch));
             #endif

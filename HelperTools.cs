@@ -13,8 +13,7 @@ namespace MCMP_Patch
 {
     internal static class HelperTools
     {
-        // TODO:Add achievements for emotes...
-        // hit_it
+        // TODO: Add achievements for emotes...
         // jiggle_jiggle
         public enum Achievements
         {
@@ -22,7 +21,8 @@ namespace MCMP_Patch
             SpaceIsTheBest,
             ItIsWhatItIs,
             FallGuy,
-            GenerationalCrashout
+            GenerationalCrashout,
+            CheddahLaden
         }
 
         public static PlayerControllerB localPlayerController { get { return StartOfRound.Instance?.localPlayerController; } }
@@ -72,6 +72,10 @@ namespace MCMP_Patch
                 case Achievements.GenerationalCrashout:
                     emoteId = "get_down";
                     achievementName = "Generational Crashout";
+                    break;
+                case Achievements.CheddahLaden:
+                    emoteId = "hit_it";
+                    achievementName = "Cheddah Laden";
                     break;
                 default:
                     emoteId = null;

@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="CustomLogging.cs" />
     <Compile Include="HelperTools.cs" />
+    <Compile Include="Patches\GrabbableObjectPatch.cs" />
     <Compile Include="Patches\InfiniteCreditsPatch.cs" />
     <Compile Include="Patches\CauseOfDeathPatch.cs" />
     <Compile Include="Patches\TerminalPatch.cs" />
