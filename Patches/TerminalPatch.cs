@@ -37,7 +37,6 @@ namespace MCMP_Patch.Patches
                 }
                 else if (__result.buyRerouteToMoon != -1 && __result.buyRerouteToMoon != -2 && __result.itemCost > 0)
                 {
-
                     if (StartOfRound.Instance.inShipPhase && !StartOfRound.Instance.travellingToNewLevel)
                         TryUnlockEmoteAchievement(Achievements.SpaceIsTheBest, playerUsername);
                 }
