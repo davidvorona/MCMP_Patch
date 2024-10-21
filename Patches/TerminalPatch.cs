@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using static MCMP_Patch.HelperTools;
 
 namespace MCMP_Patch.Patches
@@ -33,11 +34,12 @@ namespace MCMP_Patch.Patches
                 if (__result.shipUnlockableID == inverseTpUnlockableID)
                 {
                     TryUnlockEmoteAchievement(Achievements.DominoEffect, playerUsername);
- 
                 }
                 else if (__result.buyRerouteToMoon != -1 && __result.buyRerouteToMoon != -2 && __result.itemCost > 0)
                 {
-                    TryUnlockEmoteAchievement(Achievements.SpaceIsTheBest, playerUsername);
+
+                    if (StartOfRound.Instance.inShipPhase && !StartOfRound.Instance.travellingToNewLevel)
+                        TryUnlockEmoteAchievement(Achievements.SpaceIsTheBest, playerUsername);
                 }
             }
         }
