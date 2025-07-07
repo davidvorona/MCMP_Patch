@@ -33,9 +33,10 @@ namespace MCMP_Patch
             harmony.PatchAll(typeof(Plugin));
             harmony.PatchAll(typeof(CauseOfDeathPatch));
             harmony.PatchAll(typeof(TerminalPatch));
-            harmony.PatchAll(typeof(GrabbableObjectPatch));
-            #if DEBUG
-                harmony.PatchAll(typeof(InfiniteCreditsPatch));
+            harmony.PatchAll(typeof(GrabbableObjectGrabItemPatch));
+            harmony.PatchAll(typeof(GrabbableObjectBroughtToShipPatch));
+#if DEBUG
+            harmony.PatchAll(typeof(InfiniteCreditsPatch));
             #endif
 
             Log(PluginInfo.PLUGIN_GUID + " has loaded successfully.");

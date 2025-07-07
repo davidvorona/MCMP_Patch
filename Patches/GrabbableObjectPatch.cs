@@ -10,7 +10,7 @@ using static MCMP_Patch.HelperTools;
 namespace MCMP_Patch.Patches
 {
     [HarmonyPatch(typeof(GrabbableObject), "GrabItem")]
-    class GrabbableObjectPatch
+    class GrabbableObjectGrabItemPatch
     {
         [HarmonyPostfix]
         static void Postfix(GrabbableObject __instance)
@@ -19,6 +19,21 @@ namespace MCMP_Patch.Patches
             if (carryWeightValue > 100)
             {
                 TryUnlockEmoteAchievement(Achievements.CheddahLaden, __instance.playerHeldBy.playerUsername);
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(GrabbableObject), "OnBroughtToShip")]
+    class GrabbableObjectBroughtToShipPatch
+    {
+        static readonly string cashRegisterItemName = "Cash register";
+
+        [HarmonyPostfix]
+        static void Postfix(GrabbableObject __instance)
+        {
+            if (__instance.playerHeldBy != null && __instance.itemProperties.itemName == cashRegisterItemName)
+            {
+                TryUnlockEmoteAchievement(Achievements.JiggleJiggle, __instance.playerHeldBy.playerUsername);
             }
         }
     }

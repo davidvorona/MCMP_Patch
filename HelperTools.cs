@@ -14,7 +14,6 @@ namespace MCMP_Patch
     internal static class HelperTools
     {
         // TODO: Add achievements for emotes...
-        // jiggle_jiggle
         public enum Achievements
         {
             DominoEffect,
@@ -22,7 +21,8 @@ namespace MCMP_Patch
             ItIsWhatItIs,
             FallGuy,
             GenerationalCrashout,
-            CheddahLaden
+            CheddahLaden,
+            JiggleJiggle
         }
 
         public static PlayerControllerB localPlayerController { get { return StartOfRound.Instance?.localPlayerController; } }
@@ -76,6 +76,10 @@ namespace MCMP_Patch
                 case Achievements.CheddahLaden:
                     emoteId = "hit_it";
                     achievementName = "Cheddah Laden";
+                    break;
+                case Achievements.JiggleJiggle:
+                    emoteId = "jiggle_jiggle";
+                    achievementName = "Jiggle Jiggle";
                     break;
                 default:
                     emoteId = null;
