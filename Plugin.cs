@@ -35,7 +35,7 @@ namespace MCMP_Patch
             harmony.PatchAll(typeof(TerminalPatch));
             harmony.PatchAll(typeof(GrabbableObjectGrabItemPatch));
             harmony.PatchAll(typeof(GrabbableObjectBroughtToShipPatch));
-#if DEBUG
+            #if DEBUG
             harmony.PatchAll(typeof(InfiniteCreditsPatch));
             #endif
 
